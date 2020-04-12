@@ -18,34 +18,33 @@ constructor(props)
 
 componentDidMount(){
 
-  axios.get('http://localhost:8000/product/')
-.then(response =>{
-console.log(response)
-this.setState({
-  gets:response.data
-})
-})
-.catch(error=>{
-
-  console.log(error)
-})
-};
-
-deleteProd = (itemId) => {
-  axios.delete("http://localhost:8000/product/"+itemId)
-            .then(response => {
-                if(response.data != null) {
-                    this.setState({"show":true});
-                    setTimeout(() => this.setState({"show":false}), 3000);
-                    this.setState({
-                        gets: this.state.gets.filter(get => get.id !== itemId)
-                    });
-                } else {
-                    this.setState({"show":false});
-                }
-            });
-};
-
+  axios.get('http://localhost:8000/product/',{"Access-Control-Allow-Origin": "*"})
+  .then(response =>{
+  console.log(response.data)
+  this.setState({
+    gets:response.data
+  })
+  })
+  .catch(error=>{
+  
+    console.log(error)
+  })
+  };
+  deleteProd = (itemId) => {
+    axios.delete("http://localhost:8000/product/"+itemId + '/', {"Access-Control-Allow-Origin": "*"})
+              .then(response => {
+                  if(response.data != null) {
+                      this.setState({"show":true});
+                      setTimeout(() => this.setState({"show":false}), 3000);
+                      this.setState({
+                          gets: this.state.gets.filter(get => get.id !== itemId)
+                      });
+                  } else {
+                      this.setState({"show":false});
+                  }
+              });
+  };
+  
   render()
   {
     const{
@@ -77,7 +76,7 @@ deleteProd = (itemId) => {
               <tr >
                 <th>#</th>
                 <th>Product Name</th>
-                <th>Price</th>
+                <th>Product ID</th>
                 <th>Delete</th>
 
               </tr>
@@ -94,9 +93,9 @@ deleteProd = (itemId) => {
                                       {get.id}
                                   </td>
                                       <td>
-                                          {get.name}
+                                          {get.productname}
                                       </td>
-                                      <td>{get.price}</td>
+                                      <td>{get.productId}</td>
 
                                       <td>
                                           <ButtonGroup>

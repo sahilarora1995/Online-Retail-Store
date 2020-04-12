@@ -15,7 +15,7 @@ render(){
           <Jumbotron className="bg-dark text-white">
           <center><h1>Customer Management System</h1>
               
-          <Nav.Link className="text-white" href="/cget"><Glyphicon glyph='eye-open' /> Get Customer</Nav.Link>
+              <Nav.Link className="text-white" href="/cget"><Glyphicon glyph='eye-open' /> Get Customer</Nav.Link>
               <Nav.Link className="text-white" href="/cpost"><Glyphicon glyph='plus'/> Add Customer</Nav.Link>
               <Nav.Link className="text-white" href="#"><Glyphicon glyph='edit'/> Modify Customer</Nav.Link>
               </center>

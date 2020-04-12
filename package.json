@@ -16,7 +16,6 @@
   "devDependencies": {
     "gh-pages": "^2.2.0"
   },
-  "proxy": "http://localhost:8080",
 
   "scripts": {
     "start": "react-scripts start",

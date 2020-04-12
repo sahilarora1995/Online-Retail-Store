@@ -26,53 +26,43 @@ class cpost extends Component {
   address:'',
   customerId: '',
  }
-  handleChange(e) {
-          let target = e.target;
-          let value = target.type === 'checkbox' ? target.checked : target.value;
-          let name = target.name;
+ handleChange(e) {
+  let target = e.target;
+  let value = target.type === 'checkbox' ? target.checked : target.value;
+  let name = target.name;
 
-          this.setState({
-            [name]: value
-          });
-      }
-      handleSubmit = e => {
-
-        e.preventDefault()
-
-        const prod={
-          firstname:this.state.firstname,
-          lastname: this.state.lastname,
-          address: this.state.address,
-          customerId: Number(this.state.customerId),
-        };
-        console.log(prod)
-        const AuthorizedRequests = axios.create({
-          baseURL:'http://localhost:3000',
-          timeout: 5000,
-          headers: {
-            
-              'Access-Control-Allow-Origin': '*'
-          } 
-      });
-      AuthorizedRequests.post('/customer/',prod).then(response=>{
-
-        this.setState(this.initialState)
-  })
-  .catch(error=>{
-      console.log(error);
-    console.log( error.response.request._response );
+  this.setState({
+    [name]: value
   });
+}
+handleSubmit = e => {
 
-        // axios.post("http://localhost:8080/customer/", {
-        // headers: {
-        //     'Content-Type': 'application/json',
-        //     "Access-Control-Allow-Origin": "*"
-        // }}, prod)
+e.preventDefault()
 
-        
+const prod={
+  firstname:this.state.firstname,
+  lastname: this.state.lastname,
+  address: this.state.address,
+  customerId: Number(this.state.customerId),
+};
+console.log(prod)
+axios.post("http://localhost:8080/customer/",prod, {
+headers: {
+    'Content-Type': 'application/json'
+}})
+
+.then(response=>{
+
+      this.setState(this.initialState)
+})
+.catch(error=>{
+    alert('Enter Valid Inputs')
+  console.log( error.response.request._response )
+})
 
 
-    }
+}
+
 
     render() {
       const marginTop={

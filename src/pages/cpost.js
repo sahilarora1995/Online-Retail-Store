@@ -52,7 +52,7 @@ headers: {
 }})
 
 .then(response=>{
-
+      alert('Successfully Saved!')
       this.setState(this.initialState)
 })
 .catch(error=>{
@@ -76,7 +76,7 @@ headers: {
             <Row>
               <Col lg={12} style={marginTop}>
                 <Jumbotron className="bg-dark text-white">
-                <h1>Add Product</h1>
+                <h1>Add Customer</h1>
 
                 </Jumbotron>
 

@@ -18,6 +18,7 @@ render(){
               <Nav.Link className="text-white" href="/cget"><Glyphicon glyph='eye-open' /> Get Customer</Nav.Link>
               <Nav.Link className="text-white" href="/cpost"><Glyphicon glyph='plus'/> Add Customer</Nav.Link>
               <Nav.Link className="text-white" href="#"><Glyphicon glyph='edit'/> Modify Customer</Nav.Link>
+               <Nav.Link className="text-white" href="/cproduct"><Glyphicon glyph='edit'/> Products</Nav.Link>
               </center>
           </Jumbotron>
         </Col>
@@ -25,6 +26,5 @@ render(){
     </Container>
   )
 }
-
 }
 export default customer;

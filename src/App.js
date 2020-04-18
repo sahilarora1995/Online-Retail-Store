@@ -8,6 +8,11 @@ import cpost from './pages/cpost'
 import Welcome from './pages/Welcome'
 import customer from './pages/customer'
 import login from './pages/login'
+import allproducts from './pages/allproducts'
+import cproduct from './pages/cproduct'
+import customerLogin from './pages/customerLogin'
+import cart from './pages/cart'
+
 import NavigationBar from './components/NavigationBar'
 import  {Navbar,Nav,Container,Row,Jumbotron,Col} from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -41,8 +46,20 @@ class App extends Component {
                </Route>
                <Route exact path="/cpost" component={cpost}>
                </Route>
+               <Route exact path="/customerLogin" component={customerLogin}>
+               </Route>
                <Route exact path="/login" component={login}>
                </Route>
+               <Route exact path="/allproducts" component={allproducts}>
+               </Route>
+               <Route exact path="/cproduct" component={cproduct}>
+               </Route>
+               
+               <Route exact path="/cart" component={cart}>
+               </Route>
+               
+              
+               
 
              
                

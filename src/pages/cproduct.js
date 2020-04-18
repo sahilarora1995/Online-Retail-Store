@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import  {Navbar,Nav,Container,Row,Jumbotron,Col} from 'react-bootstrap'
 
-class Welcome extends Component {
+class cproduct extends Component {
   constructor(props) {
     super(props);
     this.state = {value: ''};
@@ -32,8 +32,8 @@ class Welcome extends Component {
       
    }
 
-   handleClick() { this.props.history.push('/customerLogin'); console.log('this is:', this); } 
-   handleClickp() { this.props.history.push('/login'); console.log('this is:', this); }
+   handleClick() { console.log(JSON.parse(localStorage.getItem('id'))); this.props.history.push('/allproducts');  } 
+   handleClickp() { this.props.history.push('/cart'); console.log('this is:', this); }
 
     render() {
       const marginTop={
@@ -50,7 +50,7 @@ class Welcome extends Component {
               <Col lg={12} style={marginTop}>
             
                 <Jumbotron className="bg-dark text-white">
-                <h1>ONLINE RETAIL STORE</h1>
+                <h1>PRODUCT DEPARTMENT</h1>
 
                 </Jumbotron>
 
@@ -61,11 +61,11 @@ class Welcome extends Component {
               
                     
                       </div>
-        
+                        
                       <div className="FormField">
                   
-                   <input  className="FormField__Button mr-20"  type="submit" value="CUSTOMER"  onClick={() => this.handleClick()} /> 
-                   <input  className="FormField__Button mr-20"  type="submit" value="PRODUCT OWNER"  onClick={() => this.handleClickp()} />
+                   <input  className="FormField__Button mr-20"  type="submit" value="ALL PRODUCTS"  onClick={() => this.handleClick()} /> 
+                   <input  className="FormField__Button mr-20"  type="submit" value="MY CART PRODUCTS"  onClick={() => this.handleClickp()} />
     
               
                       </div>
@@ -80,4 +80,4 @@ class Welcome extends Component {
     }
 }
 
-export default Welcome;
+export default cproduct;

@@ -4,7 +4,7 @@ import axios from 'axios';
 import  {Card,Navbar,Nav,Container,Row,Jumbotron,Col,Table,ButtonGroup,Button} from 'react-bootstrap'
 import Glyphicon from '@strongdm/glyphicon'
 //import {faList} from '@fontawesome/free-solid=svg-icon'
-class cget extends Component{
+class cart extends Component{
 
 constructor(props)
 {
@@ -18,34 +18,35 @@ constructor(props)
 
 componentDidMount(){
 
-axios.get('http://localhost:8000/customer/',{"Access-Control-Allow-Origin": "*"})
-.then(response =>{
-console.log(response.data)
-this.setState({
-  gets:response.data
-})
-})
-.catch(error=>{
-
-  console.log(error)
-})
-};
-
-deleteProd = (itemId) => {
-  axios.delete("http://localhost:8000/customer/"+itemId + '/', {"Access-Control-Allow-Origin": "*"})
-            .then(response => {
-                if(response.data != null) {
-                    this.setState({"show":true});
-                    setTimeout(() => this.setState({"show":false}), 3000);
-                    this.setState({
-                        gets: this.state.gets.filter(get => get.id !== itemId)
-                    });
-                } else {
-                    this.setState({"show":false});
-                }
-            });
-};
-
+  
+ const id= JSON.parse(localStorage.getItem('id'))
+  axios.get('http://localhost:8000/customer/'+ id + '/',{"Access-Control-Allow-Origin": "*"})
+  .then(response =>{
+  console.log(response.data)
+  this.setState({
+    gets:response.data
+  })
+  })
+  .catch(error=>{
+  
+    console.log(error)
+  })
+  };
+  deleteProd = (itemId) => {
+    axios.delete("http://localhost:8000/product/"+itemId + '/', {"Access-Control-Allow-Origin": "*"})
+              .then(response => {
+                  if(response.data != null) {
+                      this.setState({"show":true});
+                      setTimeout(() => this.setState({"show":false}), 3000);
+                      this.setState({
+                          gets: this.state.gets.filter(get => get.id !== itemId)
+                      });
+                  } else {
+                      this.setState({"show":false});
+                  }
+              });
+  };
+  
   render()
   {
     const{
@@ -65,7 +66,7 @@ deleteProd = (itemId) => {
         <Row>
           <Col lg={12} style={marginTop}>
             <Jumbotron className="bg-dark text-white">
-            <center><h1>CUSTOMER</h1>
+            <center><h1>Products</h1>
 
                 </center>
             </Jumbotron>
@@ -75,12 +76,9 @@ deleteProd = (itemId) => {
             <Table bordered hover striped variant="dark">
             <thead>
               <tr >
-                <th>#</th>
-                <th>FIRST NAME</th>
-                <th>LAST NAME </th>
-                <th> ADDRESS </th>
-                <th> CUSTOMER ID </th> 
-                <th> PRODUCT ID OF PRODUCTS INTO YOUR CARD </th>
+                <th>Customer ID</th>
+                <th>Product Name</th>
+                <th>Product ID</th>
                 <th>Delete</th>
 
               </tr>
@@ -89,27 +87,17 @@ deleteProd = (itemId) => {
             {
                                   this.state.gets.length === 0 ?
                                   <tr align="center">
-                                    <td colSpan="6">No Customers Available.</td>
+                                    <td colSpan="6">No Products Available.</td>
                                   </tr> :
                                   this.state.gets.map((get) => (
                                   <tr key={get.id}>
                                   <td>
-                                      {get.id}
-                                  </td>
-                                  <td>
-                                      {get.firstname}
+                                      {JSON.parse(localStorage.getItem('id'))}
                                   </td>
                                       <td>
-                                          {get.lastname}
+                                          {get.ProductName}
                                       </td>
-                                      <td>{get.address}</td>
-                                      <td>
-                                      {get.customerId}
-                                  </td>
-                                  
-                                      <td>
-                                      {get.cart}
-                                  </td>
+                                      <td>{get.ProductId}</td>
 
                                       <td>
                                           <ButtonGroup>
@@ -135,4 +123,4 @@ deleteProd = (itemId) => {
     )
   }
 }
-export default cget
+export default cart

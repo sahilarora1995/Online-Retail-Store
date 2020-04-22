@@ -42,7 +42,7 @@ const prod={
   productId: Number(this.state.productId),
 };
 console.log(prod)
-axios.post("http://localhost:8000/product/",prod, {
+axios.post("http://localhost:8080/product/",prod, {
 headers: {
     'Content-Type': 'application/json'
 }})

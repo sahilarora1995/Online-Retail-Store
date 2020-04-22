@@ -12,7 +12,7 @@ import allproducts from './pages/allproducts'
 import cproduct from './pages/cproduct'
 import customerLogin from './pages/customerLogin'
 import cart from './pages/cart'
-
+import productownerchoice from './pages/productownerchoice'
 import NavigationBar from './components/NavigationBar'
 import  {Navbar,Nav,Container,Row,Jumbotron,Col} from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -54,18 +54,12 @@ class App extends Component {
                </Route>
                <Route exact path="/cproduct" component={cproduct}>
                </Route>
+               <Route exact path="/productownerchoice" component={productownerchoice}>
+               </Route>
                
                <Route exact path="/cart" component={cart}>
                </Route>
                
-              
-               
-
-             
-               
-
-
-
 
       </Router>
 

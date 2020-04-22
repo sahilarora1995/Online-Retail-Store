@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import  {Navbar,Nav,Container,Row,Jumbotron,Col} from 'react-bootstrap'
 
-class Welcome extends Component {
+class productownerchoice extends Component {
   constructor(props) {
     super(props);
     this.state = {value: ''};
@@ -32,8 +32,8 @@ class Welcome extends Component {
       
    }
 
-   handleClick() { this.props.history.push('/customerLogin'); console.log('this is:', this); } 
-   handleClickp() { this.props.history.push('/login'); console.log('this is:', this); }
+   handleClick() { this.props.history.push('/customer'); console.log('this is:', this); } 
+   handleClickp() { this.props.history.push('/product'); console.log('this is:', this); }
 
     render() {
       const marginTop={
@@ -64,8 +64,8 @@ class Welcome extends Component {
         
                       <div className="FormField">
                   
-                   <input  className="FormField__Button mr-20"  type="submit" value="CUSTOMER"  onClick={() => this.handleClick()} /> 
-                   <input  className="FormField__Button mr-20"  type="submit" value="PRODUCT OWNER"  onClick={() => this.handleClickp()} />
+                   <input  className="FormField__Button mr-20"  type="submit" value="CUSTOMER MANAGEMENT"  onClick={() => this.handleClick()} /> 
+                   <input  className="FormField__Button mr-20"  type="submit" value="PRODUCT MANAGEMENT"  onClick={() => this.handleClickp()} />
     
               
                       </div>
@@ -80,4 +80,4 @@ class Welcome extends Component {
     }
 }
 
-export default Welcome;
+export default productownerchoice;

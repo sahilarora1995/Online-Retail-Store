@@ -18,7 +18,7 @@ constructor(props)
 
 componentDidMount(){
 
-  axios.get('http://localhost:8000/product/',{"Access-Control-Allow-Origin": "*"})
+  axios.get('http://localhost:8080/product/',{"Access-Control-Allow-Origin": "*"})
   .then(response =>{
   console.log(response.data)
   this.setState({
@@ -31,7 +31,7 @@ componentDidMount(){
   })
   };
   deleteProd = (itemId) => {
-    axios.delete("http://localhost:8000/product/"+itemId + '/', {"Access-Control-Allow-Origin": "*"})
+    axios.delete("http://localhost:8080/product/"+itemId + '/', {"Access-Control-Allow-Origin": "*"})
               .then(response => {
                   if(response.data != null) {
                       this.setState({"show":true});

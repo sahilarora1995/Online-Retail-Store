@@ -4,6 +4,7 @@ import axios from 'axios';
 import  {Card,Navbar,Nav,Container,Row,Jumbotron,Col,Table,ButtonGroup,Button} from 'react-bootstrap'
 import Glyphicon from '@strongdm/glyphicon'
 //import {faList} from '@fontawesome/free-solid=svg-icon'
+import Toast from 'light-toast';
 class allproducts extends Component{
 
 constructor(props)
@@ -33,10 +34,10 @@ componentDidMount(){
   })
   };
 
-  
+      
   deleteProd = (itemId) => {
-        var s=''
-    console.log(itemId)
+  
+   var s=''   //console.log(itemId)
   const id= JSON.parse(localStorage.getItem('id'))
   axios.get('http://localhost:8000/customer/'+ id + '/',{"Access-Control-Allow-Origin": "*"})
   .then(response =>{
@@ -49,31 +50,38 @@ componentDidMount(){
   s= s+ (el["ProductId"].toString())+","
 });
 s=s+itemId
-//console.log(s)
-  })
-  .catch(error=>{
-  
-    console.log(error)
-  })
-
-console.log(s)   
-  const prod={
-  "cart" : "12,13,14,15"
-};
-  axios.patch("http://localhost:8000/customer/"+ id + '/' ,prod, {
+console.log(s)
+ const prod={
+  "cart" : s
+ }
+ axios.patch("http://localhost:8000/customer/"+ id + '/' ,prod, {
 headers: {
     'Content-Type': 'application/json'
 }})
 
 .then(response=>{
-      alert('Successfully Saved!')
-      this.setState(this.initialState)
+      Toast.info('Successfully Added int your Cart.. Click Ok to continue!', 2000, () => {
+        alert("OKAY!")
+        window.location.reload();
+        this.setState(this.initialState)
+      });
+      //alert('Successfully Added into your Cart')
+      //this.setState(this.initialState)
 })
 .catch(error=>{
     alert('Enter Valid Inputs')
   console.log( error.response.request._response )
 })
 
+})
+  .catch(error=>{
+  
+    console.log(error)
+  })
+
+//console.log(s)   
+ 
+ 
 };
   
   render()

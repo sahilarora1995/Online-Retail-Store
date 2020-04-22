@@ -20,7 +20,7 @@ class login extends Component {
       handleSubmit(event) {
         if(this.state.value== 'admin123')
         {
-          this.props.history.push('/product');
+          this.props.history.push('/productownerchoice');
         }
         else if (this.state.value!='admin123') {
             alert("WRONG PASSWORD, TRY AGAIN !!")
